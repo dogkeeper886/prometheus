@@ -22,7 +22,7 @@ spec:
           subPath: prometheus.yml    
       - image: prom/node-exporter
         name: node-exporter
-  volumes:
-  - name: prometheus-config
-    configMap:
-      name: prometheus-configmap                
+      volumes:
+      - name: prometheus-config
+        configMap:
+          name: prometheus-configmap                
