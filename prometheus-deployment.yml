@@ -16,5 +16,13 @@ spec:
       containers:
       - image: prom/prometheus
         name: prometheus
+        volumeMounts:
+        - name: prometheus-config
+          mountPath: /etc/prometheus/prometheus.yml
+          subPath: prometheus.yml    
       - image: prom/node-exporter
-        name: node-exporter        
+        name: node-exporter
+  volumes:
+  - name: prometheus-config
+    configMap:
+      name: prometheus-configmap                
