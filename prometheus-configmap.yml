@@ -52,6 +52,7 @@ items:
         - job_name: "node"
           static_configs:
             - targets: ["prometheus:9100"]
+            - targets: ["10.206.78.110:9100"]      
   kind: ConfigMap
   metadata:
     creationTimestamp: "2021-10-02T15:02:29Z"

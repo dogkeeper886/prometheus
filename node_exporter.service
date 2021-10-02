@@ -1,0 +1,11 @@
+[Unit]
+Description=node_exporter
+
+[Service]
+User=root
+WorkingDirectory=/usr/local/bin/
+ExecStart=node_exporter
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
