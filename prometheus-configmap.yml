@@ -1,66 +1,24 @@
 apiVersion: v1
-items:
-- apiVersion: v1
-  data:
-    ca.crt: |
-      -----BEGIN CERTIFICATE-----
-      MIIC/jCCAeagAwIBAgIBADANBgkqhkiG9w0BAQsFADAVMRMwEQYDVQQDEwprdWJl
-      cm5ldGVzMB4XDTIxMDkyNzA2MDYwOFoXDTMxMDkyNTA2MDYwOFowFTETMBEGA1UE
-      AxMKa3ViZXJuZXRlczCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAOu4
-      6OyzPT2Xu80LcyObQATpxtL2ghinVlQTQuKyNXPPKXTsKlxRTlErMRZYr5aWi5Yz
-      8Zroo2JFRKYZKHaxIj4Kq79QDFBn+magljSu74+vZbZHIKslHvfE04tIm/n7pj0v
-      OZvlmUtYMMiuJSN1WgyPgV4Bnr9EgRBauj08XMvmo3AshIuFstK+laxOozAujgRy
-      iBh3KEO3lMLGaVL8XzoiapJUCQPUv/ys41a9TZ/d/82Yw3/up5HKCI7OqPHIzxkT
-      ccB3jTU9CLW/HRZmmFOxNrocSpUI51ezLqUm0VVqF/cQAZAVBZrg7abbBkTa7w2d
-      uGbgKg6KCla2tQLmYN8CAwEAAaNZMFcwDgYDVR0PAQH/BAQDAgKkMA8GA1UdEwEB
-      /wQFMAMBAf8wHQYDVR0OBBYEFKUS5gqHszEQNaO9BdatV05h+IWmMBUGA1UdEQQO
-      MAyCCmt1YmVybmV0ZXMwDQYJKoZIhvcNAQELBQADggEBABHwLF7grjODxPh5R8xR
-      +bgivRi8ets5EuvmLKWRVADBGzFpfEjVRgavlBKSIdZBQLZY+cUvFHwCAnmTfUDw
-      Mfm3MJ/eQBs+hfgCjHFXrLGmaeb3RqeE3hc3a588Fl+M8jzKpEVdMZw03MLtsr4S
-      EkhPL+s4gBo/ZZPQBKVpxqIetX8Sbtd9x6+hRoA21NkynhfZ2eu38jXyuWXxdYp4
-      1PYlA+POrueZT3VguO4t+NSvYl2GRNNoHN6Sgli+HmOcdsbq3BC4s/5pS4I6C+2f
-      mtA5m2/+h3sbFo55vTwm4Qc8XA1k8KMgG9WQLrVkclcbSD8kxNT3Z8qJmCsIiTVX
-      bmA=
-      -----END CERTIFICATE-----
-  kind: ConfigMap
-  metadata:
-    annotations:
-      kubernetes.io/description: Contains a CA bundle that can be used to verify the
-        kube-apiserver when using internal endpoints such as the internal service
-        IP or kubernetes.default.svc. No other usage is guaranteed across distributions
-        of Kubernetes clusters.
-    creationTimestamp: "2021-09-27T06:06:46Z"
-    name: kube-root-ca.crt
-    namespace: default
-    resourceVersion: "398"
-    uid: a4dc3a61-97b0-4109-8c64-de2a3dd7420b
-- apiVersion: v1
-  data:
-    prometheus.yml: |
-      global:
-        scrape_interval: 15s
-        evaluation_interval: 15s
-      alerting:
-        alertmanagers:
-          - static_configs:
-              - targets:
-      rule_files:
-      scrape_configs:
-        - job_name: "prometheus"
-          static_configs:
-            - targets: ["prometheus:9090"]
-        - job_name: "node"
-          static_configs:
-            - targets: ["prometheus:9100"]
-            - targets: ["10.206.78.110:9100"]      
-  kind: ConfigMap
-  metadata:
-    creationTimestamp: "2021-10-02T15:02:29Z"
-    name: prometheus-configmap
-    namespace: default
-    resourceVersion: "946579"
-    uid: 34147ac7-a9ca-4b93-bebe-f64380a16ff5
-kind: List
+data:
+  prometheus.yml: |+
+    global:
+      scrape_interval: 15s
+      evaluation_interval: 15s
+    alerting:
+      alertmanagers:
+        - static_configs:
+            - targets:
+    rule_files:
+    scrape_configs:
+      - job_name: "prometheus"
+        static_configs:
+          - targets: ["prometheus:9090"]
+      - job_name: "node"
+        static_configs:
+          - targets: ["prometheus:9100"]
+          - targets: ["10.206.78.110:9100"]
+
+kind: ConfigMap
 metadata:
-  resourceVersion: ""
-  selfLink: ""
+  name: prometheus-configmap
+  namespace: default
