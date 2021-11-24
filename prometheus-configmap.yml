@@ -15,10 +15,11 @@ data:
           - targets: ["prometheus:9090"]
       - job_name: "node"
         static_configs:
-          - targets: ["prometheus:9100"]
           - targets: ["10.206.78.110:9100"]
           - targets: ["10.206.5.11:9100"]
           - targets: ["10.206.5.17:9100"]
+          - targets: ["10.206.78.90:9100"]
+
 
 kind: ConfigMap
 metadata:
