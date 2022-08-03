@@ -15,6 +15,7 @@ spec:
     spec:
       containers:
       - image: prom/prometheus
+        imagePullPolicy: IfNotPresent
         name: prometheus
         volumeMounts:
         - name: prometheus-config
