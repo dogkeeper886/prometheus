@@ -1,0 +1,8 @@
+modules:
+  # Default IF-MIB interfaces table with ifIndex.
+  ruckus_mib:
+    walk: [ruckusSystem]
+
+    auth:
+      # Community string is used with SNMP v1 and v2. Defaults to "public".
+      community: public

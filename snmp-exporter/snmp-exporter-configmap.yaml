@@ -1,0 +1,132 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: snmp-exporter
+  namespace: default
+data:
+  snmp.yml: |
+    # WARNING: This file was auto-generated using snmp_exporter generator, manual changes will be lost.
+    ruckus_mib:
+      walk:
+      - 1.3.6.1.4.1.25053.1.1.11.1.1
+      metrics:
+      - name: ruckusSystemCPUUtil
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.1.1
+        type: gauge
+        help: CPU utilization. - 1.3.6.1.4.1.25053.1.1.11.1.1.1.1
+      - name: ruckusSystemMemoryUtil
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.1.2
+        type: gauge
+        help: Memory utilization. - 1.3.6.1.4.1.25053.1.1.11.1.1.1.2
+      - name: ruckusSystemHTTPStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.1.1
+        type: gauge
+        help: Enable/disable HTTP service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.1.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemHTTPSStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.2.1
+        type: gauge
+        help: Enable/disable HTTPS service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.2.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemTelnetStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.3.1
+        type: gauge
+        help: Enable/disable Telnet service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.3.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemSSHStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.4.1
+        type: gauge
+        help: Enable/disable SSH service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.4.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemBonjourStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.5.1
+        type: gauge
+        help: Enable/disable Bonjour service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.5.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemSyslogStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.1
+        type: gauge
+        help: Enable/disable Syslog service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemSyslogServerIP
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.2
+        type: OctetString
+        help: IP(v4 or v6) of syslog server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.2
+      - name: ruckusSystemSyslogServerPort
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.3
+        type: gauge
+        help: Port of syslog server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.3
+      - name: ruckusSystemSyslogServerProto
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.4
+        type: DisplayString
+        help: Proto type of syslog server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.4
+      - name: ruckusSystemSyslogSecondaryServerIP
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.5
+        type: OctetString
+        help: IP(v4 or v6) of secondary syslog server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.5
+      - name: ruckusSystemSyslogSecondaryServerPort
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.6
+        type: gauge
+        help: Port of secondary syslog server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.6
+      - name: ruckusSystemSyslogSecondaryServerProto
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.7
+        type: DisplayString
+        help: Proto type of secondary syslog server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.6.7
+      - name: ruckusSystemNTPStatus
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.1
+        type: gauge
+        help: Enable/disable NTP service. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemNTPGMTTime
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.2
+        type: OctetString
+        help: GMT time. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.2
+      - name: ruckusSystemNTPActiveServer
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.3
+        type: OctetString
+        help: Active NTP server. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.3
+      - name: ruckusSystemNTPUpdate
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.4
+        type: gauge
+        help: Update GMT time. - 1.3.6.1.4.1.25053.1.1.11.1.1.2.7.4
+      - name: ruckusSystemFlexMasterURL
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.2.8.1
+        type: OctetString
+        help: Config FlexMaster server URL - 1.3.6.1.4.1.25053.1.1.11.1.1.2.8.1
+      - name: ruckusSystemReboot
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.3.1
+        type: gauge
+        help: Reboot. - 1.3.6.1.4.1.25053.1.1.11.1.1.3.1
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemSetFactory
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.3.2
+        type: gauge
+        help: Set factory default. - 1.3.6.1.4.1.25053.1.1.11.1.1.3.2
+        enum_values:
+          1: "true"
+          2: "false"
+      - name: ruckusSystemDHCPRenew
+        oid: 1.3.6.1.4.1.25053.1.1.11.1.1.3.3
+        type: gauge
+        help: Renew DHCP IP. - 1.3.6.1.4.1.25053.1.1.11.1.1.3.3
+        enum_values:
+          1: "true"
+          2: "false"
+      auth:
+        community: public

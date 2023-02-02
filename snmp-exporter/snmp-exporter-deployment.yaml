@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: snmp-exporter
+  name: snmp-exporter
+spec:
+  selector:
+    matchLabels:
+      app: snmp-exporter
+  template:
+    metadata:
+      labels:
+        app: snmp-exporter
+    spec:
+      containers:
+      - image: prom/snmp-exporter:latest
+        imagePullPolicy: IfNotPresent
+        name: snmp-exporter
+        ports:
+        - containerPort: 9116
+        volumeMounts:
+        - name: config
+          mountPath: /etc/snmp_exporter/snmp.yml
+          subPath: snmp.yml                                  
+      volumes:
+      - name: config
+        configMap:
+          name: snmp-exporter
