@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: prometheus
+  name: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: prometheus
+  template:
+    metadata:
+      labels:
+        app: prometheus
+    spec:
+      containers:
+      - image: prom/prometheus:latest
+        imagePullPolicy: IfNotPresent
+        name: prometheus
+        ports:
+        - containerPort: 9090
+        volumeMounts:
+        - name: config
+          mountPath: /etc/prometheus/prometheus.yml
+          subPath: prometheus.yml
+        - mountPath: /prometheus
+          name: prometheus-pv                                              
+      volumes:
+      - name: config
+        configMap:
+          name: prometheus
+      - name: prometheus-pv
+        persistentVolumeClaim:
+          claimName: prometheus-pvc
+      securityContext:
+        fsGroup: 65534                    
