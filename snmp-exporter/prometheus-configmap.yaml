@@ -40,6 +40,9 @@ data:
           - targets:
             - 192.168.1.117  # R510
             - 192.168.1.102  # R600
+            - 192.168.1.103  # R550
+            - 192.168.1.113  # T750SE
+            - 192.168.1.114  # T301N
         metrics_path: /snmp
         params:
           module: [ruckus_mib]
